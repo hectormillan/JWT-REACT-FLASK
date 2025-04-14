@@ -25,11 +25,10 @@ export const Navbar = () => {
                     </Link>
                 </div>
                 <div className="">
+                    {store.isLogged == true ? <Link to="/profile"><span className="navbar-brand">Bienvenido: {store.user.email}</span></Link> : ""}    
                     {store.isLogged == true ? <Link to="/profile"><span className="navbar-brand">Profile</span></Link> : ""}
                     
-                    <Link to="/sign-up">
-                        <span className="navbar-brand">Sign Up</span>
-                    </Link>
+                    {store.isLogged == false ? <Link to="/sign-up"><span className="navbar-brand">Sign Up</span></Link> : "" }
                     {store.isLogged == true ? <span type="button" onClick={handleLogoutButton} className="navbar-brand">Logout</span> : <Link to="/login"><span className="navbar-brand">Login</span></Link>}
                     <Link to="/contacts">
                         <span className="navbar-brand">Contacts</span>

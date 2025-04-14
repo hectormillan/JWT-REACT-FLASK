@@ -48,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setCurrentContact: (contact) => setStore({ currentContact: { ...contact } }),
 			getContacts: async () => {
 				const host = "https://playground.4geeks.com/contact/agendas"
-				const user = "AlvaroD"
+				const user = "hector"
 				const uri = `${host}/${user}/contacts`
 				const options = {
 					method: 'GET'
@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				const host = "https://playground.4geeks.com/contact/agendas";
-				const user = "AlvaroD";
+				const user = "hector";
 				const uri = `${host}/${user}/contacts/${currentContact.id}`;
 				const options = {
 					method: 'PUT',
@@ -110,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				const host = "https://playground.4geeks.com/contact/agendas";
-				const user = "AlvaroD";
+				const user = "hector";
 				const uri = `${host}/${user}/contacts`;
 				const options = {
 					method: 'POST',
@@ -129,7 +129,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			deleteContact: async (id) => {
 				const host = "https://playground.4geeks.com/contact/agendas";
-				const user = "AlvaroD";
+				const user = "hector";
 				const uri = `${host}/${user}/contacts/${id}`;
 				const options = {
 					method: 'DELETE',
@@ -291,6 +291,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			login: async (dataToSend) => {
+				const store = getStore();
 				const uri = `${process.env.BACKEND_URL}/api/login`;
 				const options = {
 					method: 'POST',
@@ -311,6 +312,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				 	isAdmin: data.is_admin,
 				 	isLogged: true					
 				 })				
+				console.log(store.email);
 				localStorage.setItem('token', data.access_token)
 				localStorage.setItem('user', JSON.stringify(data))
 			},
